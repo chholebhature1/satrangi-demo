@@ -37,7 +37,7 @@ const Footer = () => {
               <a href="https://facebook.com/satrangidesignerstudio" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Facebook">
                 <FacebookIcon />
               </a>
-              <a href="https://wa.me/919876543210" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="WhatsApp">
+              <a href="https://wa.me/919217401412" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="WhatsApp">
                 <MessageCircle size={18} />
               </a>
             </div>
@@ -63,7 +63,7 @@ const Footer = () => {
               </li>
               <li>
                 <Phone size={18} className="contact-icon" />
-                <a href="tel:+919876543210">+91 98765 43210</a>
+                <a href="tel:+919217401412">+91 92174 01412</a>
               </li>
               <li>
                 <Mail size={18} className="contact-icon" />

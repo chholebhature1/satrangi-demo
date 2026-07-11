@@ -5,7 +5,7 @@ import { SHOPIFY_STORE_DOMAIN } from '../lib/shopifyConfig';
 import './LookbookLightbox.css';
 
 const LIGHTBOX_ID = 'lookbook-lightbox';
-const WHATSAPP_NUMBER = '919876543210';
+const WHATSAPP_NUMBER = '919217401412';
 
 const readText = (element, selector, fallback = '') => {
   const target = element?.querySelector(selector);

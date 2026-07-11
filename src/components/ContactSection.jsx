@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { MessageCircle, Phone, MapPin, Send, Clock, CheckCircle2 } from 'lucide-react';
 import './ContactSection.css';
 
-const WHATSAPP_NUMBER = '919876543210';
+const WHATSAPP_NUMBER = '919217401412';
 
 const trustBadges = [
   {
@@ -190,7 +190,7 @@ const ContactSection = () => {
                 <Phone size={18} className="detail-icon" />
                 <div>
                   <span className="detail-label">Call Us</span>
-                  <a href="tel:+919876543210" className="detail-value detail-link">+91 98765 43210</a>
+                  <a href="tel:+919217401412" className="detail-value detail-link">+91 92174 01412</a>
                 </div>
               </div>
               <div className="contact-detail-item">

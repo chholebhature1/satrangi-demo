@@ -45,7 +45,7 @@ const AnnouncementBar = ({ onVisibilityChange }) => {
 
   if (!visible) return null;
 
-  const whatsappUrl = `https://wa.me/919876543210?text=${encodeURIComponent('Hello! I would like to book an appointment at Satrangi Designer Studio.')}`;
+  const whatsappUrl = `https://wa.me/919217401412?text=${encodeURIComponent('Hello! I would like to book an appointment at Satrangi Designer Studio.')}`;
 
   return (
     <div style={{

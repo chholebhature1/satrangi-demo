@@ -13,7 +13,7 @@ import {
   SHOPIFY_STORE_DOMAIN,
 } from '../lib/shopifyConfig';
 
-const WHATSAPP_URL = 'https://wa.me/919876543210';
+const WHATSAPP_URL = 'https://wa.me/919217401412';
 
 const SHOPIFY_SEARCH_QUERY = `
   query NavbarSearchProducts {
