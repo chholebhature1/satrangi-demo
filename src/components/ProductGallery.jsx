@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { addVariantToCart, buyNowVariant, openCartDrawer } from '../lib/shopifyStorefrontCart';
 import './ProductGallery.css';
 
-// ⚠️ Update these handles to match your exact Shopify collection handles
+// Collection handles mapped to Shopify
 const COLLECTION_MAP = {
   'All':               { handle: null,              isRental: false },
   'Bridal':            { handle: 'bridal',          isRental: false },
@@ -35,7 +35,7 @@ const ProductGallery = () => {
   const listCtxRef = useRef(null);
   const emptyStateShownRef = useRef(false);
 
-  // Inject Shopify product grid with a luxury lookbook presentation
+  // Render product grid and bind Shopify web component events
   useEffect(() => {
     if (!gridRef.current) return;
 
@@ -43,7 +43,7 @@ const ProductGallery = () => {
     setHasNextPage(false);
     setLoadingMore(false);
 
-    // Global Add to Cart and Buy Now handlers
+    // Cart action handlers (attached to window for inline onclick in templates)
     window.__addLookbookToCart = async (btn) => {
       const card = btn.closest('.product-card, .stl-card');
       const variantEl = card?.querySelector('.product-variant-id, .stl-variant-id');

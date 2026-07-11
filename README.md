@@ -1,24 +1,48 @@
-# React + Vite
+# Satrangi Designer Studio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Boutique e-commerce website for Satrangi Designer Studio — a bridal and ethnic wear studio based in Noida/Delhi.
 
-Currently, two official plugins are available:
+## Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **React 19** with Vite 8
+- **Shopify Storefront API** (GraphQL) for products, cart, and checkout
+- **Shopify Web Components** for server-rendered product grids
+- **Swiper.js** for the hero carousel
+- **Lucide React** for icons
+- **Netlify** for deployment
 
-## React Compiler
+## Getting Started
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm install
+npm run dev
+```
 
-## Expanding the ESLint configuration
+Create a `.env.local` with your Shopify credentials:
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```
+VITE_SHOPIFY_STORE_DOMAIN=your-store.myshopify.com
+VITE_SHOPIFY_PUBLIC_ACCESS_TOKEN=your-token
+VITE_SHOPIFY_API_VERSION=2026-04
+```
 
-## Netlify deploy
+## Project Structure
 
-- Build command: `npm run build`
-- Publish directory: `dist`
-- Required environment variable: `VITE_SHOPIFY_PUBLIC_ACCESS_TOKEN`
-- Optional environment variables: `VITE_SHOPIFY_STORE_DOMAIN`, `VITE_SHOPIFY_API_VERSION`
-- Netlify is configured through [netlify.toml](netlify.toml) with a SPA fallback and long-lived caching for static media
+```
+src/
+├── components/       # UI components (Navbar, Hero, Gallery, etc.)
+├── lib/              # Shopify API utilities (cart, product details, config)
+├── App.jsx           # Root component with lazy section loading
+├── main.jsx          # Entry point
+├── index.css         # Global styles and design tokens
+└── App.css           # Layout-specific styles
+```
+
+## Build & Deploy
+
+```bash
+npm run build        # Output to dist/
+npm run preview      # Preview production build locally
+```
+
+Deployment is handled via Netlify with auto-deploy on push to `main`.

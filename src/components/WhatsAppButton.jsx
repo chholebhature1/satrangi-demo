@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const WHATSAPP_NUMBER = '9217401412'; // ← UPDATE: replace with real number (country code + number, no +)
+const WHATSAPP_NUMBER = '9217401412';
 const DEFAULT_MESSAGE = 'Hello! I would like to enquire about your services at Satrangi Designer Studio.';
 
 const WhatsAppButton = () => {
