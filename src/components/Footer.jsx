@@ -59,7 +59,7 @@ const Footer = () => {
             <ul className="contact-info">
               <li>
                 <MapPin size={18} className="contact-icon" />
-                <span>Satrangi Designer Studio, Main Market, Your City — 000000</span>
+                <span>Satrangi Designer Studio, Shop No. 1, Pillar No. 51 Opposite (Kesar Garden), Barola, Sector 49, Noida, Uttar Pradesh - 201301</span>
               </li>
               <li>
                 <Phone size={18} className="contact-icon" />
