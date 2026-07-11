@@ -67,7 +67,7 @@ const Footer = () => {
               </li>
               <li>
                 <Mail size={18} className="contact-icon" />
-                <a href="mailto:hello@satrangistudio.com">hello@satrangistudio.com</a>
+                <a href="mailto:satrangi261@gmail.com">satrangi261@gmail.com</a>
               </li>
             </ul>
             <div className="footer-hours">
