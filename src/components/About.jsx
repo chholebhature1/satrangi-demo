@@ -29,7 +29,7 @@ const About = () => {
       <div className="container about-container">
         <div className="about-image-wrapper animate-on-scroll slide-up">
           <img 
-            src="/gallery-1.jpg" 
+            src="/gallery-1.webp" 
             alt="Satrangi Designer Studio" 
             className="about-image"
           />
