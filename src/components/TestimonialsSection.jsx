@@ -12,18 +12,18 @@ const testimonialReels = [
   },
   {
     id: 2,
-    label: 'SATRANGI REEL 3',
+    label: 'SATRANGI DETAILS',
     src: '/SATRANGI REEL 3.mp4',
-    poster: '/testimonial-reel-3-poster.jpg',
+    poster: '/gallery-4.jpeg',
     title: 'Detail close-ups',
     description: 'Embroidery, texture, and movement captured from the atelier floor.',
   },
   {
     id: 3,
-    label: 'SATRANGI REEL 2',
+    label: 'SATRANGI FESTIVE',
     src: '/SATRANGI REEL 2.mp4',
-    poster: '/testimonial-reel-2-poster.jpg',
-    title: 'Festive styling reel',
+    poster: '/gallery-7.jpeg',
+    title: 'Festive styling',
     description: 'Color, drape, and client-ready looks from the current edit.',
   },
 ];

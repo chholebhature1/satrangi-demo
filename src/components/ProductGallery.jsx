@@ -4,12 +4,12 @@ import './ProductGallery.css';
 
 // ⚠️ Update these handles to match your exact Shopify collection handles
 const COLLECTION_MAP = {
-  'All':             { handle: null,              isRental: false },
-  'Bridal':          { handle: 'bridal',          isRental: false },
-  'Lehenga on Rent': { handle: 'lehenga-on-rent', isRental: true  },
-  'Sarees':          { handle: 'sarees',          isRental: false },
-  'Suits & Sets':    { handle: 'suits',           isRental: false },
-  'Jewellery':       { handle: 'jewellery',       isRental: true  },
+  'All':               { handle: null,              isRental: false },
+  'Bridal':            { handle: 'bridal',          isRental: false },
+  'Lehenga on Rent':   { handle: 'lehenga-on-rent', isRental: true  },
+  'Sarees':            { handle: 'sarees',          isRental: false },
+  'Suits & Sets':      { handle: 'suits',           isRental: false },
+  'Jewellery on Rent': { handle: null,              isRental: true  },
 };
 
 const filters = Object.keys(COLLECTION_MAP);
@@ -110,6 +110,7 @@ const ProductGallery = () => {
               <shopify-money query="product.selectedOrFirstAvailableVariant.price" format="money_with_currency"></shopify-money>
             </p>
             <span class="product-handle" hidden><shopify-data query="product.handle"></shopify-data></span>
+            <span class="product-type" hidden><shopify-data query="product.productType"></shopify-data></span>
             <span class="product-variant-id" hidden><shopify-data query="product.selectedOrFirstAvailableVariant.id"></shopify-data></span>
           </div>
         </div>
@@ -125,17 +126,21 @@ const ProductGallery = () => {
 
     const evaluateEmptyState = () => {
       if (!gridRef.current || emptyStateShownRef.current) return;
-      const visibleCards = gridRef.current.querySelectorAll('.product-card').length;
+      const visibleCards = gridRef.current.querySelectorAll('.product-card:not([hidden])').length;
       if (visibleCards === 0) {
         renderEmptyState();
       }
     };
 
+    // Jewellery on Rent: fetch ALL products, filter client-side
+    const isJewellery = activeFilter === 'Jewellery on Rent';
+    const fetchFirst = isJewellery ? 250 : 12;
+
     const renderMarkup = handle
       ? `
         <shopify-context type="collection" handle="${handle}">
           <template>
-            <shopify-list-context id="product-list-initial" type="product" query="collection.products" first="12">
+            <shopify-list-context id="product-list-initial" type="product" query="collection.products" first="${fetchFirst}">
               ${cardTemplate}
             </shopify-list-context>
           </template>
@@ -143,22 +148,50 @@ const ProductGallery = () => {
         </shopify-context>
       `
       : `
-        <shopify-list-context id="product-list-initial" type="product" query="products" first="12">
+        <shopify-list-context id="product-list-initial" type="product" query="products" first="${fetchFirst}">
           ${cardTemplate}
         </shopify-list-context>
       `;
 
     gridRef.current.innerHTML = renderMarkup;
 
-    const revealCards = () => {
+    const filterAndRevealCards = () => {
       const cards = gridRef.current?.querySelectorAll('.product-card');
       if (!cards || cards.length === 0) return;
-      cards.forEach((card, i) => {
-        if (card.dataset.revealObserved === 'true') return;
-        card.dataset.revealObserved = 'true';
-        card.style.transitionDelay = `${(i % 3) * 0.12}s`;
-        card.classList.add('visible');
+
+      let visibleCount = 0;
+      cards.forEach((card) => {
+        const text = [
+          card.querySelector('.product-type')?.textContent || '',
+          card.querySelector('.product-handle')?.textContent || '',
+          card.querySelector('.product-name')?.textContent || '',
+        ].join(' ').toLowerCase();
+
+        // Bridal: hide co-ord sets
+        const isBridalBlocked = activeFilter === 'Bridal' && /co[- ]?ord(?:\s*set)?/i.test(text);
+        // Jewellery on Rent: hide non-jewellery items
+        const isJewelleryBlocked = isJewellery && !/(jewellery|jewelry)/i.test(text);
+
+        const blocked = isBridalBlocked || isJewelleryBlocked;
+        card.hidden = blocked;
+        card.style.display = blocked ? 'none' : '';
+
+        if (blocked) {
+          card.classList.remove('visible');
+          return;
+        }
+
+        if (card.dataset.revealObserved !== 'true') {
+          card.dataset.revealObserved = 'true';
+          card.style.transitionDelay = `${(visibleCount % 3) * 0.12}s`;
+          card.classList.add('visible');
+        }
+        visibleCount++;
       });
+
+      if (activeFilter === 'Bridal' && visibleCount === 0) {
+        renderEmptyState();
+      }
     };
 
     const cleanupFns = [];
@@ -171,14 +204,14 @@ const ProductGallery = () => {
       let prevCardCount = 0;
 
       const checkPagination = () => {
-        const visibleCards = gridRef.current?.querySelectorAll('.product-card').length || 0;
-        if (visibleCards > 0 && visibleCards !== prevCardCount) {
-          prevCardCount = visibleCards;
-          revealCards();
+        const visibleCards = gridRef.current?.querySelectorAll('.product-card:not([hidden])').length || 0;
+        const totalCards = gridRef.current?.querySelectorAll('.product-card').length || 0;
+        if (totalCards > 0 && totalCards !== prevCardCount) {
+          prevCardCount = totalCards;
+          filterAndRevealCards();
           evaluateEmptyState();
           const requestedCount = parseInt(listCtx.getAttribute('first') || '12', 10);
-          // If we received as many as we asked for, there are likely more
-          setHasNextPage(visibleCards >= requestedCount);
+          setHasNextPage(visibleCards >= requestedCount && !isJewellery);
           setLoadingMore(false);
         }
       };

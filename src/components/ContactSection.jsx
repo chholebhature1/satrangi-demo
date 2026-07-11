@@ -15,7 +15,7 @@ const trustBadges = [
   },
   {
     icon: MapPin,
-    title: 'Exact location shared on booking',
+    title: 'Shop No. 1, Pillar No. 51 Opposite (Kesar Garden), Barola, Sector 49, Noida, Uttar Pradesh - 201301',
   },
   {
     icon: Clock,
@@ -54,7 +54,7 @@ const ContactSection = () => {
   };
 
   const whatsappDirect = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hello! I would like to book an appointment at Satrangi Designer Studio.')}`;
-  const whatsappDirections = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hello! I would like the exact studio location and directions for Satrangi Designer Studio.')}`;
+  const whatsappDirections = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent('Hello! I would like the exact studio location and directions for Satrangi Designer Studio at Shop No. 1, Pillar No. 51 Opposite (Kesar Garden), Barola, Sector 49, Noida, Uttar Pradesh - 201301.')}`;
 
   return (
     <section className="contact-section section-padding" id="contact">
@@ -112,7 +112,7 @@ const ContactSection = () => {
                     id="phone"
                     name="phone"
                     type="tel"
-                    placeholder="+91 98765 43210"
+                    placeholder="+91 95571 51311 | +91 92174 01412 | +91 96549 45439"
                     value={form.phone}
                     onChange={handleChange}
                     required
@@ -182,7 +182,7 @@ const ContactSection = () => {
                 <MapPin size={18} className="detail-icon" />
                 <div>
                   <span className="detail-label">Visit the Studio</span>
-                  <span className="detail-value">Exact address shared on WhatsApp after booking</span>
+                  <span className="detail-value">Shop No. 1, Pillar No. 51 Opposite (Kesar Garden), Barola, Sector 49, Noida, Uttar Pradesh - 201301</span>
                   <span className="detail-value">Delhi visits by appointment only</span>
                 </div>
               </div>
@@ -190,7 +190,7 @@ const ContactSection = () => {
                 <Phone size={18} className="detail-icon" />
                 <div>
                   <span className="detail-label">Call Us</span>
-                  <a href="tel:+919217401412" className="detail-value detail-link">+91 92174 01412</a>
+                  <a href="tel:+919217401412" className="detail-value detail-link">+91 95571 51311 | +91 92174 01412 | +91 96549 45439</a>
                 </div>
               </div>
               <div className="contact-detail-item">
@@ -205,8 +205,8 @@ const ContactSection = () => {
 
             <div className="contact-map contact-map--info">
               <p className="contact-map-eyebrow">Need directions?</p>
-              <h3 className="contact-map-title">We share the exact landmark, parking notes and entry instructions on WhatsApp.</h3>
-              <p className="contact-map-copy">That keeps the studio details accurate until you are ready to visit, and avoids sending you to the wrong location.</p>
+              <h3 className="contact-map-title">Shop No. 1, Pillar No. 51 Opposite (Kesar Garden), Barola, Sector 49, Noida, Uttar Pradesh - 201301</h3>
+              <p className="contact-map-copy">Parking notes and entry instructions are shared on WhatsApp.</p>
               <a
                 href={whatsappDirections}
                 target="_blank"
