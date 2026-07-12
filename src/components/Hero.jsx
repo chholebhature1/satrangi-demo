@@ -20,7 +20,7 @@ const Hero = ({ showCarousel = true, onVideoReady = () => {} }) => {
           </p>
 
           <h1 className="hero-title fade-in">
-            Delhi's Finest<br />
+            Noida's Finest<br />
             <span className="hero-title-accent">Designer Boutique</span>
           </h1>
 
